@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        @font-face {
+            font-family: 'Broone.otf';
+            src: url('./Broone.otf');
+        }
+        @font-face {
+            font-family: 'Nova.ttf';
+            src: url('./Nova.ttf');
+        }
+        .Novafont {
+            font-family: 'Nova.ttf';
+            font-size: 18px;
+        }
+        .Novafont #final-project {
+            color: #f05db0; /* ตัวหนังสือใน section นี้ */
+        }
+        .Novafont #figma {
+            color: #62709f; /* ตัวหนังสือใน section นี้ */
+        }
+        .Novafont #classroom-projects {
+            color: #9b8924; /* ตัวหนังสือใน section นี้ */
+        }
+        .broonefont {
+            font-family: 'Broone.otf';
+            font-size: 60px;
+            color: rgb(100, 62, 38);
+        }
+        .backgroundimage-btn {
+            position: relative;
+            max-width: 700px; 
+            height: 100px;
+            background-image: url('background4.png'); /* เปลี่ยนเป็น path รูป */
+            background-size: 120% auto;  /* รูปกว้าง 120% ของปุ่ม → ขยายเกินออกมา */
+            background-position: center;
+            border: none;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* เงา */
+            color: rgb(151, 84, 125);
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.495);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .accordion-item {
+            width: 80%;       /* ยืดเต็ม container */
+            max-width: 700px;  /* ไม่เกินขนาดเดิม */
+            border-radius: 30px;
+            margin: 0 auto;    /* กึ่งกลาง */
+        }
+        
+        /* ปุ่มเวลามีการ expand (เปิดอยู่) */
+        .backgroundimage-btn:not(.collapsed) {
+            color: #9b8924;
+            transform: scale(1.50);
+        }
+        .backgroundimage-btn:hover {
+            color: #9b8924;
+            transform: scale(1.30);
+        }
+        .accordion-button::after {
+            display: none;   /* ซ่อนลูกศร */
+        }
+        .custom-bg {
+            background-color: rgb(251, 177, 202);
+        }
+        main{
+            background-color:rgb(189,215,222)
+        }
+        .nav-item:hover {
+            transform: scale(1.30);
+            transition: transform 0.2s;
+        }
+        .btn2 {
+            background-image: url('background2.png');
+            background-position: 50% 83%;
+            background-size: 120% auto;  /* รูปกว้าง 120% ของปุ่ม → ขยายเกินออกมา */
+            width: 100%;       /* ปรับให้เต็ม div */
+            max-width: 700px;  /* ไม่เกินเดิม */
+            height: 100px;
+
+        }
+        .btn3 {
+            background-image: url('background3.png');
+            background-position: 50% 83%;
+            width: 100%;       /* ปรับให้เต็ม div */
+            max-width: 700px;  /* ไม่เกินเดิม */
+            height: 100px;
+        }
+        .btn4 {
+            background-image: url('background4.png');
+            background-size: 120% auto;  /* รูปกว้าง 120% ของปุ่ม → ขยายเกินออกมา */
+            width: 100%;       /* ปรับให้เต็ม div */
+            max-width: 700px;  /* ไม่เกินเดิม */
+            height: 100px;
+
+        }
+        .btn5 {
+            background-image: url('background3.png');
+            background-position: 50% 95%;
+            width: 100%;       /* ปรับให้เต็ม div */
+            max-width: 700px;  /* ไม่เกินเดิม */
+            height: 100px;
+        }
+        .fade-in {
+            opacity: 0;                  /* ซ่อนตอนแรก */
+            transform: translateY(30px); /* เลื่อนลงเล็กน้อย */
+            transition: opacity 1s ease-out, transform 1s ease-out; /* ทำให้ค่อยๆโผล่ */
+        }
+
+        /* ตอนโผล่มา */
+        .fade-in.show {
+            opacity: 1;
+            transform: translateY(0);    /* เลื่อนกลับตำแหน่งปกติ */
+        }
+        nav.navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;  /* ทับเนื้อหาอื่น */
+            /* สีพื้นหลัง / height / padding ของ navbar ปกติ */
+        }
+        .navbar-nav {
+            flex-direction: row !important;
+        }
+        .navbar-nav .nav-item {
+            margin-left: 15px; /* ระยะห่างระหว่างเมนูตอนย่อจอ */
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg custom-bg">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="aboutme.html">About me</a></li>
+                <li class="nav-item"><a class="nav-link" href="Experience.html">Experience</a></li>
+                <li class="nav-item"><a class="nav-link" href="activity.html">Activity</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container-mb-5 fade-in">
+        <div class="row align-items-center my-0">
+            <div class="col-12 col-md-6 text-center order-2 order-md-2 mb-4">
+                <img src="coverexperice.png" alt="experience element image" class="img-fluid coverexperience fade-in">
+            </div>
+            <div class="col-12 col-md-6 text-center text-md-center order-1 order-md-1">
+                <h1 class="mt-3 mt-md-0 broonefont fade-in">Experience & Skills</h1>
+                <p class="fade-in">Experiences that built my knowledge and skills. ♡</p>
+            </div>
+        </div>
+          
+
+       <!-- Accordion -->
+        <div class="accordion Novafont w-100 d-flex flex-column align-items-center fade-in" id="projectAccordion">
+            <!-- อันที่ 1 -->
+            <div class="accordion-item mb-5 fade-in" >
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed backgroundimage-btn fade-in" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                    Expense Tracking App with OCR (Final Project)
+                </button>
+            </h2>
+            <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#projectAccordion">
+                <div class="accordion-body m-5">
+                <p>A mobile app that records expenses by scanning receipts with OCR. The system reads expense details and automatically categorizes them (e.g., food, shopping). It also summarizes spending by category and provides visual insights. The app references the “MiawJot” app by KBank and focuses on expenses around Kasetsart University, Kamphaeng Saen.</p>
+                <p>✧ I worked on</p>
+                <ul class="text-start">
+                    <li>Integrated Google Vision API for OCR to read receipts</li>
+                    <li>Developed backend APIs with Node.js, Express, Firebase, and Postman</li>
+                    <li>Built mobile UI with React Native (e.g., expense summary and graph display)</li>
+                    <li>Implemented expense categorization and data visualization features</li>
+                    <li>Collaborated on logic design for smooth user experience</li>
+                </ul>
+                </div>
+                </div>
+            </div>
+        
+            <!-- อันที่ 2 -->
+            <div class="accordion-item mb-5 fade-in">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed backgroundimage-btn btn2 fade-in" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                Expense Tracker App (Figma Design)
+                </button>
+            </h2>
+            <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#projectAccordion">
+                <div class="accordion-body m-5">
+                <p>I designed a colorful and user-friendly expense tracker app prototype in Figma. The app allows users to log expenses easily and switch themes to make recording more fun and engaging.
+                </p>
+                <p>✧ I worked on</p>
+                <ul class="text-start d-inline-block">
+                    <li>Designed all app pages in Figma</li>
+                    <li>Planned user flow and navigation (which page connects to which)</li>
+                    <li>Created the interactive prototype with page linking</li>
+                    <li>Focused on usability and enjoyable design (colorful themes, simple layout)</li>
+                </ul>
+                <p><a href="https://www.figma.com/design/NACuIhh0CBZtuLgskh5g3R/moneygo--Community-?node-id=115-39&m=dev&t=gSJ6kA5G1Pa2Y1NP-1" target="_blank" style="color: #b51f94;">Click for figma design link</a></p>
+                </div>
+            </div>
+            </div>
+        
+
+            <!-- อันที่ 3 -->
+            <div class="accordion-item mb-5 fade-in">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed backgroundimage-btn btn3 fade-in" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+                        Badminton Court Booking App (Figma Design)
+                    </button>
+                </h2>
+                <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#projectAccordion">
+                    <div class="accordion-body m-5">
+                        A group project to design a university badminton court booking app. Normally, students must book courts in person, which wastes time when slots are already full. This app allows online booking, saving time and making the process easier</p>
+                        <p>✧ I worked on</p>
+                        <ul class="text-start d-inline-block">
+                            <li>Designed UX/UI screens in Figma (shared tasks with teammates)</li>
+                            <li>Helped develop parts of the frontend using JavaScript</li>
+                        </ul>
+                        <p><a href="https://www.figma.com/design/0tTcadNzv3zi7lscbMz72D/badmintonapp?node-id=3032-2305&m=dev&t=cp2c9zdvc97Rw2SC-1" target="_blank" style="color: #b51f94;">Click for figma design link</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- อันที่ 4 -->
+            <div class="accordion-item mb-5 fade-in" >
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed backgroundimage-btn btn4 fade-in" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">
+                        SA project : Visitor Screening System
+                    </button>
+                </h2>
+                <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#projectAccordion">
+                    <div class="accordion-body m-5">
+                        <p>A class project to design a system for screening external visitors and reporting incidents in the faculty building.
+                        </p>
+                        <p>✧ I worked on</p>
+                        <ul class="text-start d-inline-block">
+                            <li>Proposed the project topic</li>
+                            <li>Created ER diagram and Data Flow Diagram (DFD) for system planning</li>
+                            <li>Prepared project documentation and report</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- อันที่ 5 -->
+            <div class="accordion-item mb-5 fade-in">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed backgroundimage-btn btn5 fade-in" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5">
+                        Database project : Bus Reservation Database Design
+                    </button>
+                </h2>
+                <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#projectAccordion">
+                    <div class="accordion-body m-5">
+                        <p>A class project to design a bus reservation database system.</p>
+                        <p>✧ I worked on</p>
+                        <ul class="text-start d-inline-block">
+                            <li>Proposed the project topic</li>
+                            <li>Created ER diagram and Data Flow Diagram (DFD) for system planning</li>
+                            <li>Prepared project documentation and report</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");  // โผล่ขึ้น
+                    observer.unobserve(entry.target);    // แสดงครั้งเดียว ไม่หายอีก
+                }
+            });
+        }, { threshold: 0.2 }); // เห็น 20% ถึงทำงาน
+        
+        // สั่งให้ observer จับทุก element ที่มี class fade-in
+        document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
+
+        const navbar = document.querySelector('.navbar');
+            document.body.style.paddingTop = navbar.offsetHeight + 'px';
+
+            window.addEventListener('resize', () => {
+                document.body.style.paddingTop = navbar.offsetHeight + 'px';
+            });
+    </script>
+   
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+    @font-face {
+        font-family: 'Broone.otf';
+        src: url('./Broone.otf');
+    }
+    @font-face {
+        font-family: 'Nova.ttf';
+        src: url('./Nova.ttf');
+    }
+    .nav-item:hover {
+        transform: scale(1.30);
+        transition: transform 0.2s;
+    }
+    main{
+        background-color: rgb(189,215,222);
+    }
+    .custom-bg {
+        background-color: rgb(251, 177, 202);
+     }
+    .title {
+        padding: 50px;
+    }
+    .myinformation{
+        font-size: 17px;
+    }
+    #title_witchayada {
+        font-size: 30px;
+    }
+    .aboutstory{
+        font-size: 17px;
+    }
+    .broonefont {
+        font-family: 'Broone.otf';
+        font-size: 60px;
+        color: rgb(100, 62, 38);
+    }
+    .Novafont {
+        font-family: 'Nova.ttf';
+    }
+    .coverme{
+        height: auto;
+        display: block;     /* ทำให้ img block */
+        margin: 0 auto;
+    }
+    .internphoto {
+        max-width: 100%;
+        height: auto;
+        margin: 0;
+    }
+    .letterphoto{
+        max-width: 60%;
+        width: 500px;
+        height: auto;
+    }
+    .phonephoto {
+        max-width: 100%;
+        height: auto;
+        margin: 0;
+    }
+    #information {
+        margin-top: 60px;  /* ขยับลง 30px */
+    }
+    .skill-box {
+        background: hsla(0, 0%, 100%, 0.273); /* สีพื้นโปร่งใส */
+        border-radius: 20px; /* มุมโค้ง */
+        padding: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.3); /* กรอบบางๆ */
+        backdrop-filter: blur(10px); /* ทำให้ขุ่น */
+        -webkit-backdrop-filter: blur(10px); /* รองรับ Safari */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* เงา */
+        display: flex;          /* ทำให้กล่องยืดเต็มสูง */
+        flex-direction: column; /* ให้เนื้อหาจัดเป็นแนวตั้ง */
+        height: 100%;           /* ยืดให้สูงสุดเท่ากับอีกฝั่ง */
+    }
+    .contact-card {
+        width: 500px;                          /* ความกว้างเท่ากัน */
+        border-radius: 10px;
+        overflow: hidden;                      /* ทำให้ header โค้งไปด้วย */
+        box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15);
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        font-family: 'Nova.ttf';
+    }
+    
+    .contact-card {
+        width: 300px; /* เล็กลงนิดจะบาลานซ์กว่า */
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        font-family: 'Nova.ttf';
+        background: rgba(255, 255, 255, 0.2); /* ใส่พื้นหลังโปร่งใสให้กล่อง */
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+    /* header */
+    .contact-card .card-header {
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 10px;
+        font-weight: bold;
+    }
+    
+    /* body */
+    .contact-card .card-body {
+        padding: 20px;
+        font-size: 1rem;
+        color: #000; /* สีดำให้อ่านง่าย */
+    }
+    
+    /* footer */
+    .alert-footer {
+        padding: 10px;
+        background: transparent;
+    }
+    
+    /* ปุ่ม */
+    .alert-footer .btn {
+        background: #fff;
+        color: #333;
+        border: none;
+        border-radius: 8px;
+        padding: 5px 12px;
+    }
+    
+    .alert-footer .btn:hover {
+        background: #f0f0f0;
+        color: #000;
+    }
+    .btn-resume {
+        display: inline-block;
+        padding: 10px;        /* ลด padding ให้พอดีกับข้อความ */
+        width: 200px;
+        margin: 0 auto;  
+        text-align: center; /* กึ่งกลางข้อความ */
+        background: #f29ecf;
+        color: #333;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 0.95rem;       /* ปรับขนาดตัวอักษรให้พอดี */
+        box-shadow: 0 3px 6px rgba(0,0,0,0.2); /* เงาดูนุ่มขึ้น */
+        transition: all 0.3s ease;
+      }
+    .btn-resume:hover {
+        background: #f0f0f0;
+        color: #000;
+        box-shadow: 0 5px 12px rgba(0,0,0,0.25); /* hover แล้วเงาลึกขึ้น */
+        transform: scale(1.05);
+      }
+      /* เริ่มต้น: ซ่อน + เลื่อนลงเล็กน้อย */
+    .fade-in {
+        opacity: 0;                  /* ซ่อนตอนแรก */
+        transform: translateY(30px); /* เลื่อนลงเล็กน้อย */
+        transition: opacity 1s ease-out, transform 1s ease-out; /* ทำให้ค่อยๆโผล่ */
+    }
+
+    /* ตอนโผล่มา */
+    .fade-in.show {
+        opacity: 1;
+        transform: translateY(0);    /* เลื่อนกลับตำแหน่งปกติ */
+    }
+    nav.navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;  /* ทับเนื้อหาอื่น */
+        /* สีพื้นหลัง / height / padding ของ navbar ปกติ */
+    }
+    .navbar-nav {
+        flex-direction: row !important;
+    }
+    .navbar-nav .nav-item {
+        margin-left: 15px; /* ระยะห่างระหว่างเมนูตอนย่อจอ */
+    }
+    
+    
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg custom-bg ">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="aboutme.html">About me</a></li>
+                <li class="nav-item"><a class="nav-link" href="Experience.html">Experience</a></li>
+                <li class="nav-item"><a class="nav-link" href="activity.html">Activity</a></li>
+            </ul>
+        </nav>
+    </header>
+
+   <main class="container-fluid">
+    <div class="title fade-in">
+        <h1 class="broonefont fade-in">Welcome to My Portfolio ✴︎</h1>
+        <p class="fade-in" >A collection to get to know me — my skills and the experiences that built my knowledge.♡</p>
+        <img src="awesomeport2.png" alt="coverme" class=" coverme fade-in col-12 col-md-6">
+
+    </div>
+    <section id="about-me" class="mb-4 row Novafont fade-in">
+        <h2 class="broonefont text-center fade-in">✴︎ About me ✴︎</h2>
+        <p class="aboutstory">Hello! I'm a fourth-year Computer Science student at Kasetsart University. 
+            I'm interested in web development and have basic skills in frontend (HTML, CSS, JavaScript, Bootstrap) and some API experience. 
+            I created this portfolio by myself to show my skills, projects, and university activities, as a way to learn and grow.</p>
+    
+        <div class="row mt-3">
+            <div class="col-md-4">
+                <img src="internphoto.png" alt="Intern introduction photo" class="internphoto fade-in ">
+            </div>
+            <div class="col-md-8" id="information">
+                <div class="Novafont fade-in">
+                    <h2 class="mb-5" id="title_witchayada"><strong>Witchayada Duangtiwong ( cheese :)</strong></h2>
+                    <p class="myinformation"><strong>Date of birth</strong><br> October 26, 2003 ( 21 years old )</p>
+                    <p class="myinformation"><strong>Address</strong><br> Ayutthaya, Thailand 18270</p>
+                    <p class="myinformation"><strong>Education (Jun 2022 - Present)</strong><br> Kasetsart University, Faculty of Liberal Arts and Science, Bachelor's Degree in Computer Science, Kamphaeng Saen, Thailand</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <section id="skills" class="container my-4 Novafont fade-in">
+            <div class="row justify-content-center ">
+                <!-- Technical Skills -->
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <div class="skill-box">
+                        <h2 class="text-center mb-3" ><strong>Technical Skills</strong></h2>
+                        <div class="row">
+                            <div class="col-md-4">HTML / CSS</div>
+                            <div class="col-md-4">JavaScript</div>
+                            <div class="col-md-4">Bootstrap</div>
+                            <div class="col-md-4">Figma</div>
+                            <div class="col-md-4">Node.js</div>
+                            <div class="col-md-4">Express</div>
+                            <div class="col-md-4">RESTful API</div>
+                            <div class="col-md-4">Postman</div>
+                            <div class="col-md-4">SQL</div>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Soft Skills -->
+                <div class="col-md-6">
+                    <div class="skill-box">
+                        <h2 class="text-center mb-3"><strong>Soft Skills</strong></h2>
+                        <div class="row">
+
+                            <div class="col-md-6">Growth Mindset</div>
+                            <div class="col-md-6">Communication & Presentation Skills</div>
+                            <div class="col-md-6">Teamwork & Collaboration</div>
+                            <div class="col-md-6">Problem-Solving</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="mb-5 row text-center">
+            <img src="phonephoto1.png" alt="Decorative pictures" class="fade-in phonephoto">
+            <h2 class="broonefont mb-4 fade-in">Contact Me</h2>
+        
+            <div class="d-flex justify-content-center gap-4 flex-wrap">
+                <!-- Telephone Card -->
+                <div class="contact-card fade-in">
+                    <div class="card-header">✆ Telephone</div>
+                    <div class="card-body" id="phoneNumber">093 943 7582 <br> (cheese)</div>
+                    <div class="alert-footer text-center">
+                        <button class="btn btn-sm" onclick="copyPhone()">คัดลอก</button>
+                    </div>
+                </div>
+        
+                <!-- Email Card -->
+                <div class="contact-card fade-in">
+                    <div class="card-header">✉︎ Email</div>
+                    <div class="card-body">Witchayada.du@gmail.com</div>
+                    <div class="alert-footer text-center">
+                        <a href="mailto:witchayada.du@gmail.com" class="btn btn-sm">ส่งอีเมล</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+        
+        <section id="resume" class="mb-4 text-center d-flex flex-column align-items-center gap-3 fade-in">
+            <h2 class="broonefont">Download My Resume</h2>
+            <a href="Resume Witchayada duangtiwong.pdf"  target="_blank" download class="btn btn-resume Novafont">⬇ ดาวน์โหลดเรซูเม่</a>
+            <img src="letter.png" class="letterphoto">
+        </section>
+        
+
+    </main>
+    <script>
+        function copyPhone() {
+            const phoneText = document.getElementById("phoneNumber").innerText; 
+            navigator.clipboard.writeText(phoneText).then(() => {
+                alert("คัดลอกเบอร์แล้ว: " + phoneText);
+            }).catch(err => {
+                console.error("ไม่สามารถคัดลอกได้: ", err);
+                alert("เบราว์เซอร์ไม่อนุญาตให้คัดลอก (ลองเปิดผ่าน live server หรือ https://)");
+            });
+        }
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");  // โผล่ขึ้น
+                    observer.unobserve(entry.target);    // แสดงครั้งเดียว ไม่หายอีก
+                }
+            });
+        }, { threshold: 0.2 }); //  เห็น 20% ถึงทำงาน
+        
+        // สั่งให้ observer จับทุก element ที่มี class fade-in
+        document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
+
+        const navbar = document.querySelector('.navbar');
+            document.body.style.paddingTop = navbar.offsetHeight + 'px';
+
+            window.addEventListener('resize', () => {
+                document.body.style.paddingTop = navbar.offsetHeight + 'px';
+            });
+
+
+    </script>
+</body>
+</html>

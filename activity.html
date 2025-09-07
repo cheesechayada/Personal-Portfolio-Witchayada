@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <<style>
+        @font-face {
+            font-family: 'Broone.otf';
+            src: url('./Broone.otf');
+        }
+        @font-face {
+            font-family: 'Nova.ttf';
+            src: url('./Nova.ttf');
+        }
+        .broonefont {
+            font-family: 'Broone.otf';
+            font-size: 60px;
+            color: rgb(100, 62, 38);
+        }
+        .Novafont {
+            font-family: 'Nova.ttf';
+            font-size: 20px;
+        }
+        .Novafonttwo {
+            font-family: 'Nova.ttf';
+            font-size: 45px;
+        }
+        main{
+            background-color:rgb(189,215,222)
+        }
+       /* ภาพปก */
+       .coverimg {
+            max-width: 100%;  /* ไม่ให้เกิน column */
+            width: auto;
+            height: auto;
+            pointer-events: none;
+        }
+        .custom-bg {
+            background-color: rgb(251, 177, 202);
+        }
+        .title {
+            padding: 30px;
+        }
+        .activitysection{
+            padding: 100px;
+        }
+        .nav-item:hover {
+            transform: scale(1.30);
+            transition: transform 0.2s;
+        }
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+        background-image: none;  /* เอา icon เดิมออก */
+        }
+        .carousel-control-prev-icon::after {
+            content: '◀︎';   
+            font-size: 3rem;
+            color: rgb(15, 55, 98); 
+        }
+        .carousel-control-next-icon::after {
+            content: '▶';  
+            font-size: 3rem;
+            color: rgb(15, 55, 98); 
+        }
+        /* เพิ่ม responsive สำหรับมือถือ */
+        @media (max-width: 768px) {
+            .carousel-control-prev {
+                left: -50px; /* ค่าติดลบจะเลื่อนปุ่มออกไปนอกรูป */
+            }
+            .carousel-control-next {
+                right: -50px; /* ค่าติดลบจะเลื่อนปุ่มออกไปนอกรูป */
+            }
+            .Novafonttwo {
+                font-size : 35px;
+            }
+            .Novafont {
+                font-size: 18px;
+            }
+
+        }
+        .fade-in {
+            opacity: 0;                  /* ซ่อนตอนแรก */
+            transform: translateY(30px); /* เลื่อนลงเล็กน้อย */
+            transition: opacity 1s ease-out, transform 1s ease-out; /* ทำให้ค่อยๆโผล่ */
+        }
+    
+        /* ตอนโผล่มา */
+        .fade-in.show {
+            opacity: 1;
+            transform: translateY(0);    /* เลื่อนกลับตำแหน่งปกติ */
+        }
+        nav.navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;  /* ทับเนื้อหาอื่น */
+           
+        }
+        .navbar-nav {
+            flex-direction: row !important;
+        }
+        .navbar-nav .nav-item {
+            margin-left: 15px; /* ระยะห่างระหว่างเมนูตอนย่อจอ */
+        }
+        .article-img {
+            max-width: 100%;   /* ค่าเริ่มต้น (สำหรับมือถือ/จอเล็ก) */
+            border-radius: 5%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+          /* สำหรับจอใหญ่  */
+        @media (min-width: 768px) {
+            .article-img {
+              max-width: 60%;
+            }
+        }
+        
+          
+          
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg custom-bg">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="aboutme.html">About me</a></li>
+                <li class="nav-item"><a class="nav-link" href="Experience.html">Experience</a></li>
+                <li class="nav-item"><a class="nav-link" href="activity.html">Activity</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container-fluid ">
+        <div class="row align-items-center title">
+            <!-- ข้อความ -->
+            <div class="col-12 col-md-6 mt-5">
+                <h1 class="broonefont fade-in">My activity in university ✳︎</h1>
+                <p class="fade-in">From the university activities I joined,
+                    I have learned that when facing new situations, I can adapt,
+                    change my way of thinking and actions, stay flexible,
+                    and always be ready to learn new things. ♡
+                </p>
+            </div>
+        
+            <!-- ภาพปก -->
+            <div class="col-12 col-md-6 text-center mt-5">
+                <img src="coveractivity.png" alt="activity element image" class="img-fluid coverimg fade-in">
+            </div>
+        </div>
+        
+        <section id="activities" class="activitysection text-center fade-in">
+            <article id="happiness" class="mb-5 row fade-in fade-in">
+                <h2 class="Novafonttwo fade-in">✦ Happiness in the 21st Century</h2>
+              
+                <!-- Carousel -->
+                <div id="carouselExample" class="carousel slide mb-3 fade-in">
+                  <div class="carousel-inner fade-in">
+                    <!-- รูปแรก -->
+                    <div class="carousel-item active">
+                      <img src="teaching.png" alt="University project: teaching primary students with fun learning activities" class="article-img mb-3 fade-in">
+                    </div>
+              
+                    <!-- รูปสอง -->
+                    <div class="carousel-item ">
+                      <img src="happygroup.jpg" class="article-img mb-3 " alt="teaching project 2">
+                    </div>
+
+                    <!-- รูปสาม -->
+                    <div class="carousel-item ">
+                        <img src="happy3.jpg" class="article-img mb-3" alt="teaching project 2">
+                    </div>
+              
+                    <!-- วิดีโอ -->
+                    <div class="carousel-item ">
+                      <video class="article-img mb-3" controls>
+                        <source src="project-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  </div>
+              
+                  <!-- ปุ่มเลื่อน -->
+                  <button class="carousel-control-prev"  type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                  </button>
+                  <button class="carousel-control-next"  type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                  </button>
+                </div>
+              
+                <!-- คำอธิบาย -->
+                <p class="Novafont fade-in">
+                  A class project where we created activities for primary students to practice language, communication, and math. 
+                  I worked on planning, preparing, and presenting. 
+                  This improved my teamwork, management, and communication skills, and our group won the award for highest satisfaction.
+                </p>
+              </article>
+              
+
+            <article id="badminton" class="mb-5 row fade-in ">
+                <h2 class="Novafonttwo fade-in">✧ Badminton Competition ✦</h2>
+
+                <!-- Carousel -->
+                <div id="carouselExample2" class="carousel slide mb-3 fade-in ">
+                    <div class="carousel-inner fade-in">
+                      <!-- รูปแรก -->
+                      <div class="carousel-item active fade-in">
+                        <img src="badminton2.png" alt="Playing badminton in the university women's doubles competition" class="article-img mb-3" >
+                      </div>
+                
+                      <!-- รูปสอง -->
+                      <div class="carousel-item">
+                        <img src="badmintonwithfriends.jpg" class="article-img mb-3" alt="Badminton Competition 2">
+                      </div>
+  
+                      <!-- รูปสาม -->
+                      <div class="carousel-item">
+                          <img src="duobad.jpg" class="article-img mb-3" alt="Badminton Competition 3">
+                      </div>
+                    </div>
+                
+                    <!-- ปุ่มเลื่อน -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample2" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon"></span>
+                    </button>
+                    <button class="carousel-control-next"  type="button" data-bs-target="#carouselExample2" data-bs-slide="next">
+                      <span class="carousel-control-next-icon"></span>
+                    </button>
+                  </div>
+        
+                  <p class="Novafont fade-in">Joined the faculty sports event in women's doubles badminton. It was my first competition, where I learned to manage pressure and nerves. In 2025, I joined the tryouts again, gaining more experience.</p>
+            </article>
+
+            <article id="musicclub" class="mb-5 row fade-in">
+                <h2 class="Novafonttwo fade-in">✦ Music Club ✧</h2>
+
+                <!-- Carousel -->
+                <div id="carouselExample3" class="carousel slide mb-3 fade-in">
+                    <div class="carousel-inner fade-in">
+                      <!-- รูปแรก -->
+                      <div class="carousel-item active">
+                        <img src="mcclub.png" alt="Practicing singing and instruments in the university music club" class="article-img mb-3 fade-in">
+                      </div>
+                
+                      <!-- รูปสอง -->
+                      <div class="carousel-item">
+                        <img src="bisrisukwan.jpg" class="article-img mb-3" alt="Badminton Competition 2">
+                      </div>
+
+                      <!-- ปุ่มเลื่อน -->
+                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample3" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                      </button>
+                      <button class="carousel-control-next"  type="button" data-bs-target="#carouselExample3" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                      </button>
+                    </div>
+                
+                    <p class="Novafont fade-in">A university music club where I tried singing, drums, guitar, and keyboard. It gave me the chance to learn new things and discover more about myself.</p>
+            </article>
+
+            <article id="freshy" class="mb-5 row fade-in fade-in">
+                <h2 class="Novafonttwo fade-in">✧ Freshy KU 83 ✦</h2>
+
+                 <!-- Carousel -->
+                 <div id="carouselExample4" class="carousel slide mb-3 fade-in" >
+                    <div class="carousel-inner fade-in">
+                      <!-- รูปแรก -->
+                      <div class="carousel-item active">
+                        <img src="staffreshy2.png" alt="Helping organize and guide freshmen during Freshy KU 83 welcoming event" class="article-img mb-3 fade-in">
+                      </div>
+                
+                      <!-- รูปสอง -->
+                      <div class="carousel-item">
+                        <img src="staff83.JPG" class="article-img mb-3" alt="Badminton Competition 2">
+                      </div>
+
+                      <!-- รูปสาม -->
+                      <div class="carousel-item">
+                        <img src="staff833.JPG" class="article-img mb-3" alt="Badminton Competition 2">
+                      </div>
+
+                      <!-- รูปสี่ -->
+                      <div class="carousel-item">
+                        <img src="staffwithfriends.JPG" class="article-img mb-3" alt="Badminton Competition 2">
+                      </div>
+
+                      <!-- ปุ่มเลื่อน -->
+                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample4" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                      </button>
+                      <button class="carousel-control-next"  type="button" data-bs-target="#carouselExample4" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                      </button>
+                    </div>
+                
+                <p class="Novafont fade-in">A welcoming activity for new students to explore the university and make friends. I joined as staff, taking care of freshmen and coordinating with senior organizers.</p>
+            </article>
+        </section>
+
+    </main>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");  // โผล่ขึ้น
+                    observer.unobserve(entry.target);    // แสดงครั้งเดียว ไม่หายอีก
+                }
+            });
+        }, { threshold: 0.2 }); // เห็น 20% ถึงทำงาน
+        
+        // สั่งให้ observer จับทุก element ที่มี class fade-in
+        document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
+        
+    </script>
+</body>
+</html>
